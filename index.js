@@ -3,6 +3,7 @@ const MongoStore = require("connect-mongo");
 const express = require("express");
 const { Itoa } = require("@itoa/itoa");
 const { GraphQLApp } = require("@itoa/app-graphql");
+const { AdminUIApp } = require("@itoa/app-admin-ui");
 const { MongooseAdapter } = require("@itoa/adapter-mongoose");
 const { PasswordAuthStrategy } = require("@itoa/auth-password");
 const { reads } = require("@itoa/lib/files");
@@ -81,8 +82,20 @@ function configureExpress(app) {
   });
   return app;
 }
+
+const apps = [
+  new GraphQLApp(),
+  new AdminUIApp({
+    name: "Itoa.vn",
+    appId: process.env.NODE_ENV === "production" ? "145518257438217" : false,
+    pageId: process.env.NODE_ENV === "production" ? "106614338147778" : false,
+    authStrategy,
+    enableDefaultRoute: false,
+  }),
+];
+
 module.exports = {
   itoa,
-  apps: [new GraphQLApp()],
+  apps,
   configureExpress,
 };
