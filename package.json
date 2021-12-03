@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev:auth": "cross-env PORT=3001 NODE_ENV=development DISABLE_LOGGING=true AUTH=true itoa dev",
-    "dev:core": "cross-env PORT=3002 NODE_ENV=development DISABLE_LOGGING=true itoa dev",
-    "build:auth": "cross-env NODE_ENV=production DISABLE_LOGGING=true AUTH=true itoa build",
-    "build:core": "cross-env NODE_ENV=production DISABLE_LOGGING=true itoa build",
-    "start:auth": "cross-env PORT=3001 NODE_ENV=production AUTH=true itoa start",
-    "start:core": "cross-env PORT=3002 NODE_ENV=production itoa start"
+    "dev": "cross-env NODE_ENV=development itoa dev",
+    "build": "cross-env NODE_ENV=production itoa build",
+    "start": "cross-env PORT=3001 NODE_ENV=production itoa start"
   },
   "directories": {
     "lib": "lib"
@@ -38,7 +35,6 @@
     "nodemailer": "^6.6.5"
   },
   "devDependencies": {
-    "@itoa/app-admin-ui": "^10.0.7",
     "cross-env": "^7.0.3",
     "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "^8.0.0"
